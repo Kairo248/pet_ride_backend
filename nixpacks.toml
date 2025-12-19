@@ -6,11 +6,12 @@ nixPkgs = ["maven", "jdk21"]
 
 [phases.build]
 cmds = [
-  "mvn clean package -DskipTests"
+  "chmod +x build.sh start.sh || true",
+  "./build.sh"
 ]
 
 [phases.start]
-cmd = "java -jar target/backend-0.0.1-SNAPSHOT.jar"
+cmd = "./start.sh"
 
 [staticAssets]
 path = "target"
