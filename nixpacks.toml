@@ -1,0 +1,17 @@
+# Nixpacks configuration for Railway
+# This ensures Maven builds the project before running
+
+[phases.setup]
+nixPkgs = ["maven", "jdk21"]
+
+[phases.build]
+cmds = [
+  "mvn clean package -DskipTests"
+]
+
+[phases.start]
+cmd = "java -jar target/backend-0.0.1-SNAPSHOT.jar"
+
+[staticAssets]
+path = "target"
+
